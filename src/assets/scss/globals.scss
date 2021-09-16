@@ -1,0 +1,34 @@
+body {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  margin: 0;
+  font-family: "Inter", "Roboto", Arial, sans-serif;
+  &:not(.overlay) {
+    background-color: #edeef5;
+    color: rgb(41, 41, 41);
+  }
+}
+
+* {
+  box-sizing: border-box;
+  scrollbar-width: none;
+}
+
+#app {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+*::-moz-selection {
+  /* Code for Firefox */
+  color: white;
+  background: #2926a7;
+}
+
+*::selection {
+  color: white;
+  background: #2926a7;
+}
