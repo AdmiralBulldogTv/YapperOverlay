@@ -240,6 +240,11 @@
         </div>
       </details> -->
     </div>
+    <div class="footer">
+      <p>All code is public and avaliable on <a href="https://github.com/AdmiralBulldogTv">GitHub</a></p>
+      <p>If there are any issues contact <a href="https://discordapp.com/users/383195095610163200">Troy#0003</a> on discord.</p>
+      <p>Made by with &lt;3 by <a href="https://komodohype.dev">Troy</a> and <a href="https://github.com/intro23">Intro233</a></p>
+    </div>
   </div>
 </template>
 
