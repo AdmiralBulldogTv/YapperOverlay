@@ -200,6 +200,18 @@
               <audio src="@voices/obama-example.wav" ref="audio-11" @ended="playing = -1" />
             </details>
           </div>
+          <div class="voice" @click.prevent="onClick">
+            <details>
+              <summary @mousedown.prevent>Multi Voice</summary>
+              <p @click.stop>
+                <PlayButton
+                  @click="playing !== 12 ? (playing = 12) : (playing = -1)"
+                  :paused="playing !== 12"
+                />bull: oh shit. i'm sorry. lac: sorry for what.
+              </p>
+              <audio src="@voices/ohshit-example.wav" ref="audio-12" @ended="playing = -1" />
+            </details>
+          </div>
           <!-- <div class="voice" @click.prevent="onClick">
             <details>
               <summary @mousedown.prevent>poki: Pokimane</summary>
