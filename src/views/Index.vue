@@ -9,7 +9,7 @@
             Anything overly sexual or hateful will result in being permabanned.
           </li>
           <li>You can have a maximum of 5 different voice swaps.</li>
-          <li>You can add a maximum of 15 different sound bytes.</li>
+          <!-- <li>You can add a maximum of 15 different sound bytes.</li> -->
           <li>
             If your message is too obnoxious or annoying it can be skipped
             without refund.
@@ -20,6 +20,33 @@
             By default some words are changed to help the model pronounce it
             better, you can disable feature by wrapping whatever you want to say
             in backtick characters. Example: `hello`
+          </li>
+          <li>
+            <h3>Subscriptions</h3>
+            <p>The following voice brackets, indicate the default voice for the resub in that time range.</p>
+            <p>It also is when the voice is unlocked.</p>
+            <p>i.e. a 3 month sub cannot use rae's voice until they are a 41 month sub but a 56 month sub can use rae's voice.</p> 
+            <ul>
+              <li>narr1, narr2, narr3, ann1, bull - All Tiers</li>
+              <li>bull 1-5 months</li>
+              <li>obama 6-9 months</li>
+              <li>arno 10-12 months</li>
+              <li>lac 13-20 months</li>
+              <li>krab 21-21 months</li>
+              <li>glad 22-30 months</li>
+              <li>bull 31-40 months</li>
+              <li>rae: 41-55 month</li>
+              <li>pooh 56+ months</li>
+            </ul>
+          </li>
+          <li>
+            <h3>Bits and Donations</h3>
+            <p>Every 100 bits = 1 Euro</p>
+            <ul>
+              <li>narr1, narr2, narr3, ann1, bull, obama, arno, krab - Any amount</li>
+              <li>Lacari & Glados - 6 Euro</li>
+              <li>Rae & Pooh - 10 Euro</li>
+            </ul>
           </li>
         </ul>
       </details>
@@ -171,7 +198,7 @@
               <audio src="@voices/obama-example.wav" ref="audio-11" @ended="playing = -1" />
             </details>
           </div>
-          <div class="voice" @click.prevent="onClick">
+          <!-- <div class="voice" @click.prevent="onClick">
             <details>
               <summary @mousedown.prevent>poki: Pokimane</summary>
               <p @click.stop>
@@ -182,7 +209,7 @@
               </p>
               <audio src="@voices/poki-example.wav" ref="audio-12" @ended="playing = -1" />
             </details>
-          </div>
+          </div> -->
         </div>
       </details>
       <!-- <details open>
