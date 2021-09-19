@@ -66,9 +66,11 @@ export default defineComponent({
     const audioPlayer = ref((null as unknown) as HTMLAudioElement);
 
     const onError = (ev: Event) => {
-      // console.log(ev);
       if (!opened) {
         notFound.value = true;
+        cleanup()
+      } else {
+        setTimeout(() => init(), 1500);
       }
     };
 
@@ -124,6 +126,7 @@ export default defineComponent({
     };
 
     const init = () => {
+      console.log("starting eventsub")
       cleanup();
       evtSource = new EventSource(
         `${ENV.API_URL}/v1/sse/${route.params.id}`
