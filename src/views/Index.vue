@@ -27,25 +27,27 @@
             <p>It also is when the voice is unlocked.</p>
             <p>i.e. a 3 month sub cannot use rae's voice until they are a 41 month sub but a 56 month sub can use rae's voice.</p> 
             <ul>
-              <li>narr1, narr2, narr3, ann1, bull - All Tiers</li>
-              <li>bull 1-5 months</li>
-              <li>obama 6-9 months</li>
-              <li>arno 10-12 months</li>
-              <li>lac 13-20 months</li>
-              <li>krab 21-21 months</li>
-              <li>glad 22-30 months</li>
-              <li>bull 31-40 months</li>
-              <li>rae: 41-55 month</li>
-              <li>pooh 56+ months</li>
+              <li>Voices enabled by default: narr1, narr2, narr3, ann1, bull</li>
+              <li>1-5 month subs the default voice is bull</li>
+              <li>6-9 month subs the default voice is obama</li>
+              <li>10-12 month subs the default voice is arno</li>
+              <li>13-20 month subs the default voice is lac</li>
+              <li>21-21 month subs the default voice is krab</li>
+              <li>22-30 month subs the default voice is glad</li>
+              <li>31-40 month subs the default voice is bull</li>
+              <li>41-55 month subs the default voice is rae</li>
+              <li>56+ month subs the default voice is pooh</li>
             </ul>
           </li>
           <li>
             <h3>Bits and Donations</h3>
-            <p>Every 100 bits = 1 Euro</p>
+            <p>Every 100 bits = 1 Euro.</p>
+            <p>The default voice for donations is bull</p>
+            <p>All bit emotes are stripped. Such as Cheer100 or PogChamp1000.</p>
             <ul>
-              <li>narr1, narr2, narr3, ann1, bull, obama, arno, krab - Any amount</li>
-              <li>Lacari & Glados - 6 Euro</li>
-              <li>Rae & Pooh - 10 Euro</li>
+              <li>3 Euro and above enables narr1, narr2, narr3, ann1, bull, obama, arno, krab</li>
+              <li>6 Euro and above enables Lacari & Glados </li>
+              <li>10 Euro and above enables Rae & Pooh</li>
             </ul>
           </li>
         </ul>

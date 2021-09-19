@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onBeforeUnmount, onMounted, ref } from "vue";
+import { defineComponent, onBeforeUnmount, onMounted, ref, watch } from "vue";
 
 import { useHead } from "@vueuse/head";
 import { useRoute } from "vue-router";
@@ -60,17 +60,35 @@ export default defineComponent({
     const route = useRoute();
 
     let evtSource: EventSource;
+    let reconnect: NodeJS.Timeout;
     let opened = false;
 
     const notFound = ref(false);
+    const isConnected = ref(false);
     const audioPlayer = ref((null as unknown) as HTMLAudioElement);
+
+    const i = setInterval(() => {
+      if (!evtSource) isConnected.value = false;
+      else {
+        isConnected.value = evtSource.readyState === EventSource.OPEN
+      }
+    }, 3000);
+
+    watch(isConnected, () => {
+      if (!isConnected.value && opened) {
+        if (reconnect) clearTimeout(reconnect)
+        reconnect = setTimeout(() => init(), 1500);
+      }
+    })
 
     const onError = (ev: Event) => {
       if (!opened) {
         notFound.value = true;
-        cleanup()
+        cleanup();
+        setTimeout(() => location.reload(), 5000);
       } else {
-        setTimeout(() => init(), 1500);
+        if (reconnect) clearTimeout(reconnect)
+        reconnect = setTimeout(() => init(), 1500);
       }
     };
 
@@ -143,7 +161,11 @@ export default defineComponent({
 
     onMounted(() => init());
 
-    onBeforeUnmount(() => cleanup());
+    onBeforeUnmount(() => {
+      cleanup();
+      if (reconnect) clearTimeout(reconnect);
+      clearInterval(i);
+    });
 
     return {
       notFound,
