@@ -23,11 +23,19 @@
           </li>
           <li>
             <h3>Subscriptions</h3>
-            <p>The following voice brackets, indicate the default voice for the resub in that time range.</p>
+            <p>
+              The following voice brackets, indicate the default voice for the
+              resub in that time range.
+            </p>
             <p>It also is when the voice is unlocked.</p>
-            <p>i.e. a 3 month sub cannot use rae's voice until they are a 41 month sub but a 56 month sub can use rae's voice.</p> 
+            <p>
+              i.e. a 3 month sub cannot use rae's voice until they are a 41
+              month sub but a 56 month sub can use rae's voice.
+            </p>
             <ul>
-              <li>Voices enabled by default: narr1, narr2, narr3, ann1, bull</li>
+              <li>
+                Voices enabled by default: narr1, narr2, narr3, ann1, bull
+              </li>
               <li>1-5 month subs the default voice is bull</li>
               <li>6-9 month subs the default voice is obama</li>
               <li>10-12 month subs the default voice is arno</li>
@@ -43,10 +51,15 @@
             <h3>Bits and Donations</h3>
             <p>Every 100 bits = 1 Euro.</p>
             <p>The default voice for donations is bull</p>
-            <p>All bit emotes are stripped. Such as Cheer100 or PogChamp1000.</p>
+            <p>
+              All bit emotes are stripped. Such as Cheer100 or PogChamp1000.
+            </p>
             <ul>
-              <li>3 Euro and above enables narr1, narr2, narr3, ann1, bull, obama, arno, krab</li>
-              <li>6 Euro and above enables Lacari & Glados </li>
+              <li>
+                3 Euro and above enables narr1, narr2, narr3, ann1, bull, obama,
+                arno, krab
+              </li>
+              <li>6 Euro and above enables Lacari & Glados</li>
               <li>10 Euro and above enables Rae & Pooh</li>
             </ul>
           </li>
@@ -64,7 +77,11 @@
                   :paused="playing !== 0"
                 />rae: bulldog is my best friend.
               </p>
-              <audio src="@voices/rae-example.wav" ref="audio-0" @ended="playing = -1" />
+              <audio
+                src="@voices/rae-example.wav"
+                ref="audio-0"
+                @ended="playing = -1"
+              />
             </details>
           </div>
           <div class="voice" @click.prevent="onClick">
@@ -76,7 +93,11 @@
                   :paused="playing !== 1"
                 />bull: i am infact half chinese.
               </p>
-              <audio src="@voices/bull-example.wav" ref="audio-1" @ended="playing = -1" />
+              <audio
+                src="@voices/bull-example.wav"
+                ref="audio-1"
+                @ended="playing = -1"
+              />
             </details>
           </div>
           <div class="voice" @click.prevent="onClick">
@@ -88,7 +109,11 @@
                   :paused="playing !== 2"
                 />lac: i promise i will play it today no scam this time.
               </p>
-              <audio src="@voices/lac-example.wav" ref="audio-2" @ended="playing = -1" />
+              <audio
+                src="@voices/lac-example.wav"
+                ref="audio-2"
+                @ended="playing = -1"
+              />
             </details>
           </div>
           <div class="voice" @click.prevent="onClick">
@@ -100,7 +125,11 @@
                   :paused="playing !== 3"
                 />ann1: in the left we have a fat man.
               </p>
-              <audio src="@voices/ann1-example.wav" ref="audio-3" @ended="playing = -1"/>
+              <audio
+                src="@voices/ann1-example.wav"
+                ref="audio-3"
+                @ended="playing = -1"
+              />
             </details>
           </div>
           <div class="voice" @click.prevent="onClick">
@@ -112,7 +141,11 @@
                   :paused="playing !== 4"
                 />krab: GIMME YOUR MONEY!
               </p>
-              <audio src="@voices/krab-example.wav" ref="audio-4" @ended="playing = -1" />
+              <audio
+                src="@voices/krab-example.wav"
+                ref="audio-4"
+                @ended="playing = -1"
+              />
             </details>
           </div>
           <div class="voice" @click.prevent="onClick">
@@ -124,7 +157,11 @@
                   :paused="playing !== 5"
                 />glad: Here Come The Test Results, You Are A Horrible Person.
               </p>
-              <audio src="@voices/glad-example.wav" ref="audio-5" @ended="playing = -1" />
+              <audio
+                src="@voices/glad-example.wav"
+                ref="audio-5"
+                @ended="playing = -1"
+              />
             </details>
           </div>
           <div class="voice" @click.prevent="onClick">
@@ -136,7 +173,11 @@
                   :paused="playing !== 6"
                 />arno: I need your clothes, your boots, and your motorcycle.
               </p>
-              <audio src="@voices/arno-example.wav" ref="audio-6" @ended="playing = -1" />
+              <audio
+                src="@voices/arno-example.wav"
+                ref="audio-6"
+                @ended="playing = -1"
+              />
             </details>
           </div>
           <div class="voice" @click.prevent="onClick">
@@ -148,7 +189,11 @@
                   :paused="playing !== 7"
                 />pooh: I love china.
               </p>
-              <audio src="@voices/pooh-example.wav" ref="audio-7" @ended="playing = -1" />
+              <audio
+                src="@voices/pooh-example.wav"
+                ref="audio-7"
+                @ended="playing = -1"
+              />
             </details>
           </div>
           <div class="voice" @click.prevent="onClick">
@@ -160,7 +205,11 @@
                   :paused="playing !== 8"
                 />narr1: I am reading a book on your mother.
               </p>
-              <audio src="@voices/narr1-example.wav" ref="audio-8"  @ended="playing = -1"/>
+              <audio
+                src="@voices/narr1-example.wav"
+                ref="audio-8"
+                @ended="playing = -1"
+              />
             </details>
           </div>
           <div class="voice" @click.prevent="onClick">
@@ -172,7 +221,11 @@
                   :paused="playing !== 9"
                 />narr2: I am reading a book on your sister.
               </p>
-              <audio src="@voices/narr2-example.wav" ref="audio-9" @ended="playing = -1" />
+              <audio
+                src="@voices/narr2-example.wav"
+                ref="audio-9"
+                @ended="playing = -1"
+              />
             </details>
           </div>
           <div class="voice" @click.prevent="onClick">
@@ -184,7 +237,11 @@
                   :paused="playing !== 10"
                 />narr3: I fucked your mom yesterday Troy. She liked it.
               </p>
-              <audio src="@voices/narr3-example.wav" ref="audio-10" @ended="playing = -1" />
+              <audio
+                src="@voices/narr3-example.wav"
+                ref="audio-10"
+                @ended="playing = -1"
+              />
             </details>
           </div>
           <div class="voice" @click.prevent="onClick">
@@ -197,7 +254,11 @@
                 />obama: My fellow americans we must pull up our pants and
                 endure the lash of the spanking.
               </p>
-              <audio src="@voices/obama-example.wav" ref="audio-11" @ended="playing = -1" />
+              <audio
+                src="@voices/obama-example.wav"
+                ref="audio-11"
+                @ended="playing = -1"
+              />
             </details>
           </div>
           <div class="voice" @click.prevent="onClick">
@@ -209,7 +270,11 @@
                   :paused="playing !== 12"
                 />bull: oh shit. i'm sorry. lac: sorry for what.
               </p>
-              <audio src="@voices/ohshit-example.wav" ref="audio-12" @ended="playing = -1" />
+              <audio
+                src="@voices/ohshit-example.wav"
+                ref="audio-12"
+                @ended="playing = -1"
+              />
             </details>
           </div>
           <!-- <div class="voice" @click.prevent="onClick">
@@ -241,9 +306,19 @@
       </details> -->
     </div>
     <div class="footer">
-      <p>All code is public and avaliable on <a href="https://github.com/AdmiralBulldogTv">GitHub</a></p>
-      <p>If there are any issues contact <a href="https://discordapp.com/users/383195095610163200">Troy#0003</a> on discord.</p>
-      <p>Made by with &lt;3 by <a href="https://komodohype.dev">Troy</a> and <a href="https://github.com/intro23">Intro233</a></p>
+      <p>
+        All code is public and avaliable on
+        <a href="https://github.com/AdmiralBulldogTv">GitHub</a>
+      </p>
+      <p>
+        If there are any issues contact
+        <a href="https://discordapp.com/users/383195095610163200">Troy#0003</a>
+        on discord.
+      </p>
+      <p>
+        Made by with &lt;3 by <a href="https://komodohype.dev">Troy</a> and
+        <a href="https://github.com/intro23">Intro233</a>
+      </p>
     </div>
   </div>
 </template>
@@ -258,32 +333,32 @@ export default defineComponent({
   setup() {
     const playing = ref(-1);
     const refs = {
-      "audio-0": ref(null as unknown as HTMLAudioElement),
-      "audio-1": ref(null as unknown as HTMLAudioElement),
-      "audio-2": ref(null as unknown as HTMLAudioElement),
-      "audio-3": ref(null as unknown as HTMLAudioElement),
-      "audio-4": ref(null as unknown as HTMLAudioElement),
-      "audio-5": ref(null as unknown as HTMLAudioElement),
-      "audio-6": ref(null as unknown as HTMLAudioElement),
-      "audio-7": ref(null as unknown as HTMLAudioElement),
-      "audio-8": ref(null as unknown as HTMLAudioElement),
-      "audio-9": ref(null as unknown as HTMLAudioElement),
-      "audio-10": ref(null as unknown as HTMLAudioElement),
-      "audio-11": ref(null as unknown as HTMLAudioElement),
-      "audio-12": ref(null as unknown as HTMLAudioElement),
-    }
+      "audio-0": ref((null as unknown) as HTMLAudioElement),
+      "audio-1": ref((null as unknown) as HTMLAudioElement),
+      "audio-2": ref((null as unknown) as HTMLAudioElement),
+      "audio-3": ref((null as unknown) as HTMLAudioElement),
+      "audio-4": ref((null as unknown) as HTMLAudioElement),
+      "audio-5": ref((null as unknown) as HTMLAudioElement),
+      "audio-6": ref((null as unknown) as HTMLAudioElement),
+      "audio-7": ref((null as unknown) as HTMLAudioElement),
+      "audio-8": ref((null as unknown) as HTMLAudioElement),
+      "audio-9": ref((null as unknown) as HTMLAudioElement),
+      "audio-10": ref((null as unknown) as HTMLAudioElement),
+      "audio-11": ref((null as unknown) as HTMLAudioElement),
+      "audio-12": ref((null as unknown) as HTMLAudioElement),
+    };
 
     watch(playing, (newValue, oldValue) => {
       if (oldValue !== -1) {
         const oldKey = `audio-${oldValue}` as keyof typeof refs;
-        refs[oldKey].value.pause()
+        refs[oldKey].value.pause();
         refs[oldKey].value.currentTime = 0;
       }
       if (newValue !== -1) {
         const newKey = `audio-${newValue}` as keyof typeof refs;
         console.log(newKey);
         refs[newKey].value.currentTime = 0;
-        refs[newKey].value.play()
+        refs[newKey].value.play();
       }
     });
 

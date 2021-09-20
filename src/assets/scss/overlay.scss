@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Gluten&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gluten&family=Roboto+Mono:wght@600&display=swap");
+
+.overlay {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  width: 800px;
+  height: 600px;
+  padding: 1em;
+  grid-gap: 0.5em;
+  &.fade {
+    opacity: 1;
+  }
+}
+
+span {
+  color: white;
+  text-shadow: 1px 1px 5px black;
+  text-align: center;
+  font-family: "Gluten", cursive;
+}
+
+.text {
+  font-size: 1.75em;
+}
+
+.sub-text {
+  margin-top: 0.5em;
+  font-size: 1.25em;
+  font-weight: 700;
+}
+
+.alert-image {
+  // width: 75%;
+  max-height: 450px;
+}

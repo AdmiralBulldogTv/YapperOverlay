@@ -1,6 +1,10 @@
 <template>
-  <div>
-    <audio ref="audioPlayer" @ended="onEnd" @error="onEnd" />
+  <div class="overlay" :class="{ fade: alertImageFade }">
+    <img class="alert-image" :src="alertImage" />
+    <span v-if="alertText" class="text">{{ alertText }}</span>
+    <span v-if="alertSubText" class="sub-text">{{ alertSubText }}</span>
+    <audio ref="alertPlayer" @ended="onEndAlert" />
+    <audio ref="audioPlayer" @ended="onEnd" />
   </div>
 </template>
 
@@ -22,12 +26,13 @@ type ActionEvent =
   | {
       event: "tts";
       payload: {
-        wav_id: string;
-        transcription: {
-          [x: number]: {
-            speaker: string;
-            text: string;
-          };
+        wav_id: string | null;
+        alert: null | {
+          type: string;
+          image: string;
+          audio: string;
+          text: string;
+          sub_text: string;
         };
       };
     }
@@ -37,15 +42,14 @@ type ActionEvent =
     };
 
 interface TtsAction {
-  url: string;
-  transcription: {
-    [x: number]: {
-      speaker: string;
-      text: string;
-    };
+  url: string | null;
+  alert: null | {
+    image_url: string;
+    audio_url: string;
+    text: string;
+    sub_text: string;
   };
 }
-
 
 let ENV: any;
 
@@ -63,6 +67,14 @@ export default defineComponent({
     let reconnect: NodeJS.Timeout;
     let opened = false;
 
+    const ttsQueue: TtsAction[] = [];
+
+    const alertImageFade = ref(false);
+    const alertImage = ref("");
+    const alertText = ref("");
+    const alertSubText = ref("");
+    const alertPlayer = ref((null as unknown) as HTMLAudioElement);
+
     const notFound = ref(false);
     const isConnected = ref(false);
     const audioPlayer = ref((null as unknown) as HTMLAudioElement);
@@ -70,16 +82,16 @@ export default defineComponent({
     const i = setInterval(() => {
       if (!evtSource) isConnected.value = false;
       else {
-        isConnected.value = evtSource.readyState === EventSource.OPEN
+        isConnected.value = evtSource.readyState === EventSource.OPEN;
       }
     }, 3000);
 
     watch(isConnected, () => {
       if (!isConnected.value && opened) {
-        if (reconnect) clearTimeout(reconnect)
+        if (reconnect) clearTimeout(reconnect);
         reconnect = setTimeout(() => init(), 1500);
       }
-    })
+    });
 
     const onError = (ev: Event) => {
       if (!opened) {
@@ -87,23 +99,100 @@ export default defineComponent({
         cleanup();
         setTimeout(() => location.reload(), 5000);
       } else {
-        if (reconnect) clearTimeout(reconnect)
+        if (reconnect) clearTimeout(reconnect);
         reconnect = setTimeout(() => init(), 1500);
       }
     };
 
-    const onEnd = () => {
-      audioPlayer.value.pause();
-      audioPlayer.value.currentTime = 0;
-      audioPlayer.value.src = "";
-      if (ttsQueue.length === 0) return;
-      const action = ttsQueue.shift()!;
-      audioPlayer.value.src = action.url;
-      audioPlayer.value.play();
+    let action: TtsAction;
+    let actionStartTime = 0;
+    let waiting = false;
+    let endReject = null as null | (() => void);
+
+    const onEnd = async (skip?: boolean) => {
+      try {
+        if (skip !== true) {
+          const diff = actionStartTime + 8000 - Date.now();
+          if (diff > 0) {
+            waiting = true;
+            await new Promise((resolve, reject) => {
+              endReject = reject;
+              setTimeout(resolve, diff);
+            }).finally(() => {
+              endReject = null;
+              waiting = false;
+            });
+          }
+        }
+
+        console.log("end triggered");
+        if (!audioPlayer.value.paused) {
+          audioPlayer.value.pause();
+          audioPlayer.value.currentTime = 0;
+          audioPlayer.value.src = "";
+        }
+
+        if (!alertPlayer.value.paused) {
+          alertPlayer.value.pause();
+          alertPlayer.value.currentTime = 0;
+          alertPlayer.value.src = "";
+        }
+
+        if (alertImageFade.value) {
+          alertImageFade.value = false;
+          await new Promise((resolve, reject) => {
+            endReject = reject;
+            setTimeout(resolve, 400);
+          }).finally(() => {
+            endReject = null;
+          });
+          alertImage.value = "";
+          alertText.value = "";
+          alertSubText.value = "";
+        }
+
+        actionStartTime = 0;
+
+        if (ttsQueue.length === 0) return;
+        action = ttsQueue.shift()!;
+        if (action.alert) {
+          alertImage.value = action.alert.image_url;
+          await new Promise((resolve, reject) => {
+            endReject = reject;
+            setTimeout(resolve, 400);
+          }).finally(() => {
+            endReject = null;
+          });
+          alertImageFade.value = true;
+          alertText.value = action.alert.text;
+          alertSubText.value = action.alert.sub_text;
+
+          alertPlayer.value.src = action.alert.audio_url;
+          await alertPlayer.value.play();
+        } else if (action.url) {
+          audioPlayer.value.src = action.url;
+          await audioPlayer.value.play();
+          actionStartTime = Date.now();
+        }
+      } catch (e) {
+        if (e) console.error(e);
+      }
+    };
+
+    const onEndAlert = () => {
+      if (!action) return onEnd();
+      if (action.url) {
+        audioPlayer.value.src = action.url;
+        audioPlayer.value.play();
+        actionStartTime = Date.now();
+      } else {
+        onEnd();
+      }
     };
 
     const checkProcessing = () => {
-      if (audioPlayer.value.paused) onEnd();
+      if (audioPlayer.value.paused && alertPlayer.value.paused && !waiting)
+        onEnd();
     };
 
     const onAction = (ev: MessageEvent) => {
@@ -111,12 +200,22 @@ export default defineComponent({
       if (ae.event == "settings") {
       } else if (ae.event === "tts") {
         ttsQueue.push({
-          url: `${ENV.API_URL}/v1/wav/${ae.payload.wav_id}.wav`,
-          transcription: ae.payload.transcription,
+          url: ae.payload.wav_id
+            ? `${ENV.API_URL}/v1/wav/${ae.payload.wav_id}.wav`
+            : null,
+          alert: ae.payload.alert
+            ? {
+                image_url: `${ENV.API_URL}/v1/alerts/${ae.payload.alert.type}/${ae.payload.alert.image}`,
+                audio_url: `${ENV.API_URL}/v1/alerts/${ae.payload.alert.type}/${ae.payload.alert.audio}`,
+                text: ae.payload.alert.text,
+                sub_text: ae.payload.alert.sub_text,
+              }
+            : null,
         });
         checkProcessing();
       } else if (ae.event === "skip") {
-        onEnd();
+        if (endReject) endReject();
+        onEnd(true);
       } else if (ae.event === "reload") {
         window.location.reload();
       }
@@ -144,11 +243,10 @@ export default defineComponent({
     };
 
     const init = () => {
-      console.log("starting eventsub")
+      console.log("starting eventsub");
+      alertPlayer.value.volume = 0.3;
       cleanup();
-      evtSource = new EventSource(
-        `${ENV.API_URL}/v1/sse/${route.params.id}`
-      );
+      evtSource = new EventSource(`${ENV.API_URL}/v1/sse/${route.params.id}`);
       evtSource.addEventListener("error", onError);
       // @ts-ignore
       evtSource.addEventListener("ready", onReady);
@@ -156,8 +254,6 @@ export default defineComponent({
       evtSource.addEventListener("action", onAction);
       evtSource.addEventListener("open", onOpen);
     };
-
-    const ttsQueue: TtsAction[] = [];
 
     onMounted(() => init());
 
@@ -168,6 +264,12 @@ export default defineComponent({
     });
 
     return {
+      onEndAlert,
+      alertImageFade,
+      alertImage,
+      alertText,
+      alertSubText,
+      alertPlayer,
       notFound,
       audioPlayer,
       onEnd,
@@ -176,4 +278,6 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "@scss/overlay.scss";
+</style>
