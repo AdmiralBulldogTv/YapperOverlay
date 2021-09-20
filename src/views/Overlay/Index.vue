@@ -104,14 +104,14 @@ export default defineComponent({
       }
     };
 
-    let action: TtsAction;
+    let action: TtsAction | undefined;
     let actionStartTime = 0;
     let waiting = false;
     let endReject = null as null | (() => void);
 
     const onEnd = async (skip?: boolean) => {
       try {
-        if (skip !== true) {
+        if (skip !== true && action?.alert) {
           const diff = actionStartTime + 12000 - Date.now();
           if (diff > 0) {
             waiting = true;
