@@ -9,7 +9,9 @@
   transition: opacity 200ms ease;
   width: 800px;
   height: 600px;
-  padding: 1em;
+  max-height: 600px;
+  max-width: 800px;
+  overflow: hidden;
   grid-gap: 0.5em;
   &.fade {
     opacity: 1;
@@ -24,16 +26,18 @@ span {
 }
 
 .text {
-  font-size: 1.75em;
+  font-size: 2em;
 }
 
 .sub-text {
   margin-top: 0.5em;
-  font-size: 1.25em;
+  font-size: 1.5em;
   font-weight: 700;
+  line-height: 1.5;
 }
 
 .alert-image {
-  // width: 75%;
-  max-height: 450px;
+  max-width: 90%;
+  height: 350px;
+  object-fit: contain;
 }

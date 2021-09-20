@@ -34,17 +34,14 @@
             </p>
             <ul>
               <li>
-                Voices enabled by default: narr1, narr2, narr3, ann1, bull
+                Voices enabled by default: narr1, narr2, narr3, ann1, bull, obama
               </li>
-              <li>1-5 month subs the default voice is bull</li>
-              <li>6-9 month subs the default voice is obama</li>
-              <li>10-12 month subs the default voice is arno</li>
-              <li>13-20 month subs the default voice is lac</li>
-              <li>21-21 month subs the default voice is krab</li>
-              <li>22-30 month subs the default voice is glad</li>
-              <li>31-40 month subs the default voice is bull</li>
-              <li>41-55 month subs the default voice is rae</li>
-              <li>56+ month subs the default voice is pooh</li>
+              <li>At 10 months of subscription you unlock arno</li>
+              <li>At 13 months of subscription you unlock lac</li>
+              <li>At 16 months of subscription you unlock krab</li>
+              <li>At 22 months of subscription you unlock glad</li>
+              <li>At 41 months of subscription you unlock rae</li>
+              <li>At 56 months of subscription you unlock</li>
             </ul>
           </li>
           <li>

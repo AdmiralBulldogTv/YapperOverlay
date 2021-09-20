@@ -181,10 +181,10 @@ export default defineComponent({
 
     const onEndAlert = () => {
       if (!action) return onEnd();
+      actionStartTime = Date.now();
       if (action.url) {
         audioPlayer.value.src = action.url;
         audioPlayer.value.play();
-        actionStartTime = Date.now();
       } else {
         onEnd();
       }
