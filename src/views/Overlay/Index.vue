@@ -112,7 +112,7 @@ export default defineComponent({
     const onEnd = async (skip?: boolean) => {
       try {
         if (skip !== true) {
-          const diff = actionStartTime + 8000 - Date.now();
+          const diff = actionStartTime + 12000 - Date.now();
           if (diff > 0) {
             waiting = true;
             await new Promise((resolve, reject) => {
