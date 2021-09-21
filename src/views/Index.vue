@@ -24,8 +24,7 @@
           <li>
             <h3>Subscriptions</h3>
             <p>
-              The following voice brackets, indicate the default voice for the
-              resub in that time range.
+              The following voice brackets, indicate when the voices become unlocked.
             </p>
             <p>It also is when the voice is unlocked.</p>
             <p>

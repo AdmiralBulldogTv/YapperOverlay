@@ -285,8 +285,8 @@ export default defineComponent({
     const init = () => {
       console.log("starting eventsub");
 
-      alertPlayer.value.volume = parseInt((route.query.alertVolume as LocationQueryValue)?.toString() || "0.5");
-      audioPlayer.value.volume = parseInt((route.query.ttsVolume as LocationQueryValue)?.toString() || "1");
+      alertPlayer.value.volume = parseFloat((route.query.alertVolume as LocationQueryValue)?.toString() || "50")/100;
+      audioPlayer.value.volume = parseFloat((route.query.ttsVolume as LocationQueryValue)?.toString() || "100")/100;
 
       cleanup();
       evtSource = new EventSource(`${ENV.API_URL}/v1/sse/${route.params.id}`);
