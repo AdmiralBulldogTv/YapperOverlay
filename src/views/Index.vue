@@ -22,6 +22,9 @@
             in backtick characters. Example: `hello`
           </li>
           <li>
+            Click this link to donate. <a href="https://streamelements.com/admiralbulldog/tip">https://streamelements.com/admiralbulldog/tip</a>
+          </li>
+          <li>
             <h3>Subscriptions</h3>
             <p>
               The following voice brackets, indicate when the voices become unlocked.
