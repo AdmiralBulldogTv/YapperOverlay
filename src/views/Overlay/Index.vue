@@ -1,7 +1,14 @@
 <template>
   <div class="overlay" :class="{ fade: alertImageFade }">
     <img class="alert-image" :src="alertImage" />
-    <span v-if="alertText" class="text">{{ alertText }}</span>
+    <span v-if="alertText" class="text">
+      <template v-for="(word, i) in alertText">
+        <span v-if="word.animate" class="wiggle" :key="i">
+          <span class="animated-letter" v-for="(l, n) in word.word" :key="`${i}-${n}`">{{l}}</span>
+        </span>
+        {{ word.extra }}
+      </template>
+    </span>
     <span v-if="alertSubText" class="sub-text">{{ alertSubText }}</span>
     <audio ref="alertPlayer" @ended="onEndAlert" />
     <audio ref="audioPlayer" @ended="onEnd" />
@@ -12,7 +19,7 @@
 import { defineComponent, onBeforeUnmount, onMounted, ref, watch } from "vue";
 
 import { useHead } from "@vueuse/head";
-import { useRoute } from "vue-router";
+import { LocationQueryValue, useRoute } from "vue-router";
 
 type ActionEvent =
   | {
@@ -51,6 +58,12 @@ interface TtsAction {
   };
 }
 
+interface AlertWord {
+  animate: boolean;
+  word: string;
+  extra: string;
+}
+
 let ENV: any;
 
 export default defineComponent({
@@ -71,7 +84,7 @@ export default defineComponent({
 
     const alertImageFade = ref(false);
     const alertImage = ref("");
-    const alertText = ref("");
+    const alertText = ref([] as AlertWord[]);
     const alertSubText = ref("");
     const alertPlayer = ref((null as unknown) as HTMLAudioElement);
 
@@ -147,7 +160,7 @@ export default defineComponent({
             endReject = null;
           });
           alertImage.value = "";
-          alertText.value = "";
+          alertText.value = [];
           alertSubText.value = "";
         }
 
@@ -164,7 +177,34 @@ export default defineComponent({
             endReject = null;
           });
           alertImageFade.value = true;
-          alertText.value = action.alert.text;
+          
+          const arr: AlertWord[] = [];
+          let currentWord: AlertWord = {
+            animate: false,
+            word: "",
+            extra: "",
+          }
+
+          const split = action.alert.text.split(" ");
+          for (const word of split) {
+            if (word.charAt(0) === '~') {
+              if (currentWord.word || currentWord.extra) {
+                currentWord.extra += " ";
+                arr.push(currentWord);
+              }
+              currentWord = {
+                animate: true,
+                word: word.substr(1),
+                extra: "",
+              }
+            } else {
+              currentWord.extra += ` ${word}`
+            }
+          }
+
+          if (currentWord.word || currentWord.extra) arr.push(currentWord);
+
+          alertText.value = arr;
           alertSubText.value = action.alert.sub_text;
 
           alertPlayer.value.src = action.alert.audio_url;
@@ -244,7 +284,10 @@ export default defineComponent({
 
     const init = () => {
       console.log("starting eventsub");
-      alertPlayer.value.volume = 0.3;
+
+      alertPlayer.value.volume = parseInt((route.query.alertVolume as LocationQueryValue)?.toString() || "0.5");
+      audioPlayer.value.volume = parseInt((route.query.ttsVolume as LocationQueryValue)?.toString() || "1");
+
       cleanup();
       evtSource = new EventSource(`${ENV.API_URL}/v1/sse/${route.params.id}`);
       evtSource.addEventListener("error", onError);
