@@ -43,7 +43,7 @@
               <li>At 16 months of subscription you unlock krab</li>
               <li>At 22 months of subscription you unlock glad</li>
               <li>At 41 months of subscription you unlock rae</li>
-              <li>At 56 months of subscription you unlock</li>
+              <li>At 56 months of subscription you unlock pooh</li>
             </ul>
           </li>
           <li>
