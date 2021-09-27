@@ -35,11 +35,11 @@
               month sub but a 56 month sub can use rae's voice.
             </p>
             <p>
-              The default voice for subscriptions is obama.
+              The default voice for subscriptions is trump.
             </p>
             <ul>
               <li>
-                Voices enabled by default: narr1, narr2, narr3, ann1, bull, obama
+                Voices enabled by default: narr1, narr2, narr3, ann1, bull, obama, trump
               </li>
               <li>At 10 months of subscription you unlock arno</li>
               <li>At 13 months of subscription you unlock lac</li>
