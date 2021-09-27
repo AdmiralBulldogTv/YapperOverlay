@@ -45,7 +45,9 @@
               <li>At 13 months of subscription you unlock lac</li>
               <li>At 16 months of subscription you unlock krab</li>
               <li>At 22 months of subscription you unlock glad</li>
+              <li>At 31 months of subscription you unlock trump</li>
               <li>At 41 months of subscription you unlock rae</li>
+              <li>At 50 months of subscription you unlock gabe</li>
               <li>At 56 months of subscription you unlock pooh</li>
             </ul>
           </li>
@@ -61,8 +63,8 @@
                 3 Euro and above enables narr1, narr2, narr3, ann1, bull, obama,
                 arno, krab
               </li>
-              <li>6 Euro and above enables Lacari & Glados</li>
-              <li>10 Euro and above enables Rae & Pooh</li>
+              <li>6 Euro and above enables Lacari, Glados, Gaben and Trump</li>
+              <li>10 Euro and above enables Rae and Pooh</li>
             </ul>
           </li>
         </ul>
@@ -265,6 +267,38 @@
           </div>
           <div class="voice" @click.prevent="onClick">
             <details>
+              <summary @mousedown.prevent>trump: Trump</summary>
+              <p @click.stop>
+                <PlayButton
+                  @click="playing !== 13 ? (playing = 13) : (playing = -1)"
+                  :paused="playing !== 13"
+                />trump: I love the great nation of america.
+              </p>
+              <audio
+                src="@voices/trump-example.wav"
+                ref="audio-13"
+                @ended="playing = -1"
+              />
+            </details>
+          </div>
+          <div class="voice" @click.prevent="onClick">
+            <details>
+              <summary @mousedown.prevent>gabe: Gaben</summary>
+              <p @click.stop>
+                <PlayButton
+                  @click="playing !== 14 ? (playing = 14) : (playing = -1)"
+                  :paused="playing !== 14"
+                />gabe: I love watching admiralbulldog on twitch.
+              </p>
+              <audio
+                src="@voices/gabe-example.wav"
+                ref="audio-14"
+                @ended="playing = -1"
+              />
+            </details>
+          </div>
+          <div class="voice" @click.prevent="onClick">
+            <details>
               <summary @mousedown.prevent>Multi Voice</summary>
               <p @click.stop>
                 <PlayButton
@@ -348,6 +382,8 @@ export default defineComponent({
       "audio-10": ref((null as unknown) as HTMLAudioElement),
       "audio-11": ref((null as unknown) as HTMLAudioElement),
       "audio-12": ref((null as unknown) as HTMLAudioElement),
+      "audio-13": ref((null as unknown) as HTMLAudioElement),
+      "audio-14": ref((null as unknown) as HTMLAudioElement),
     };
 
     watch(playing, (newValue, oldValue) => {
