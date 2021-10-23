@@ -299,6 +299,38 @@
           </div>
           <div class="voice" @click.prevent="onClick">
             <details>
+              <summary @mousedown.prevent>arch: Arch</summary>
+              <p @click.stop>
+                <PlayButton
+                  @click="playing !== 15 ? (playing = 16) : (playing = -1)"
+                  :paused="playing !== 15"
+                />arch: I love lolis
+              </p>
+              <audio
+                src="@voices/arch-example.wav"
+                ref="audio-15"
+                @ended="playing = -1"
+              />
+            </details>
+          </div>
+          <div class="voice" @click.prevent="onClick">
+            <details>
+              <summary @mousedown.prevent>loli: Loli</summary>
+              <p @click.stop>
+                <PlayButton
+                  @click="playing !== 16 ? (playing = 16) : (playing = -1)"
+                  :paused="playing !== 16"
+                />loli: I love arch
+              </p>
+              <audio
+                src="@voices/loli-example.wav"
+                ref="audio-16"
+                @ended="playing = -1"
+              />
+            </details>
+          </div>
+          <div class="voice" @click.prevent="onClick">
+            <details>
               <summary @mousedown.prevent>Multi Voice</summary>
               <p @click.stop>
                 <PlayButton
@@ -384,6 +416,8 @@ export default defineComponent({
       "audio-12": ref((null as unknown) as HTMLAudioElement),
       "audio-13": ref((null as unknown) as HTMLAudioElement),
       "audio-14": ref((null as unknown) as HTMLAudioElement),
+      "audio-15": ref((null as unknown) as HTMLAudioElement),
+      "audio-16": ref((null as unknown) as HTMLAudioElement),
     };
 
     watch(playing, (newValue, oldValue) => {
