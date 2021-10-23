@@ -45,7 +45,7 @@
               <li>At 13 months of subscription you unlock lac</li>
               <li>At 16 months of subscription you unlock krab</li>
               <li>At 22 months of subscription you unlock glad</li>
-              <li>At 31 months of subscription you unlock trump</li>
+              <li>At 30 months of subscription you unlock arch and loli</li>
               <li>At 41 months of subscription you unlock rae</li>
               <li>At 50 months of subscription you unlock gabe</li>
               <li>At 56 months of subscription you unlock pooh</li>
@@ -63,7 +63,7 @@
                 3 Euro and above enables narr1, narr2, narr3, ann1, bull, obama,
                 arno, krab
               </li>
-              <li>6 Euro and above enables Lacari, Glados, Gaben and Trump</li>
+              <li>6 Euro and above enables Lacari, Glados, Gaben, Trump, Arch and Loli</li>
               <li>10 Euro and above enables Rae and Pooh</li>
             </ul>
           </li>
