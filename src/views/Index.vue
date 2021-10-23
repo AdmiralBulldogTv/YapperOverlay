@@ -302,7 +302,7 @@
               <summary @mousedown.prevent>arch: Arch</summary>
               <p @click.stop>
                 <PlayButton
-                  @click="playing !== 15 ? (playing = 16) : (playing = -1)"
+                  @click="playing !== 15 ? (playing = 15) : (playing = -1)"
                   :paused="playing !== 15"
                 />arch: I love lolis
               </p>
