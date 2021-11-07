@@ -46,6 +46,7 @@
               <li>At 16 months of subscription you unlock krab</li>
               <li>At 22 months of subscription you unlock glad</li>
               <li>At 30 months of subscription you unlock arch and loli</li>
+              <li>At 35 months of subscription you unlock gura</li>
               <li>At 41 months of subscription you unlock rae</li>
               <li>At 50 months of subscription you unlock gabe</li>
               <li>At 56 months of subscription you unlock pooh</li>
@@ -63,7 +64,7 @@
                 3 Euro and above enables narr1, narr2, narr3, ann1, bull, obama,
                 arno, krab
               </li>
-              <li>6 Euro and above enables Lacari, Glados, Gaben, Trump, Arch and Loli</li>
+              <li>6 Euro and above enables Lacari, Glados, Gaben, Trump, Arch, Loli and Gura</li>
               <li>10 Euro and above enables Rae and Pooh</li>
             </ul>
           </li>
@@ -331,6 +332,22 @@
           </div>
           <div class="voice" @click.prevent="onClick">
             <details>
+              <summary @mousedown.prevent>gura: GawrGura</summary>
+              <p @click.stop>
+                <PlayButton
+                  @click="playing !== 17 ? (playing = 17) : (playing = -1)"
+                  :paused="playing !== 17"
+                />gura: i love long hard big fat. p v c pipes which allow me to build my water park.
+              </p>
+              <audio
+                src="@voices/gura-example.wav"
+                ref="audio-17"
+                @ended="playing = -1"
+              />
+            </details>
+          </div>
+          <div class="voice" @click.prevent="onClick">
+            <details>
               <summary @mousedown.prevent>Multi Voice</summary>
               <p @click.stop>
                 <PlayButton
@@ -418,6 +435,7 @@ export default defineComponent({
       "audio-14": ref((null as unknown) as HTMLAudioElement),
       "audio-15": ref((null as unknown) as HTMLAudioElement),
       "audio-16": ref((null as unknown) as HTMLAudioElement),
+      "audio-17": ref((null as unknown) as HTMLAudioElement),
     };
 
     watch(playing, (newValue, oldValue) => {
