@@ -4,7 +4,7 @@
     <span v-if="alertText" class="text">
       <template v-for="(word, i) in alertText">
         <span v-if="word.animate" class="wiggle" :key="i">
-          <span class="animated-letter" v-for="(l, n) in word.word" :key="`${i}-${n}`">{{l}}</span>
+          <span class="animated-letter" v-for="(l, n) in word.word.split('')" :key="`${i}-${n}`">{{l}}</span>
         </span>
         {{ word.extra }}
       </template>
@@ -38,6 +38,7 @@ type ActionEvent =
           type: string;
           image: string;
           audio: string;
+          volume: number;
           text: string;
           sub_text: string;
         };
@@ -55,6 +56,7 @@ interface TtsAction {
     audio_url: string;
     text: string;
     sub_text: string;
+    volume?: number;
   };
 }
 
@@ -122,7 +124,7 @@ export default defineComponent({
     let waiting = false;
     let endReject = null as null | (() => void);
 
-    const onEnd = async (skip?: boolean) => {
+    const onEnd = async (_?: any, skip?: boolean) => {
       try {
         if (skip !== true && action?.alert) {
           const diff = actionStartTime + 12000 - Date.now();
@@ -208,6 +210,7 @@ export default defineComponent({
           alertSubText.value = action.alert.sub_text;
 
           alertPlayer.value.src = action.alert.audio_url;
+          alertPlayer.value.volume = (action.alert.volume || 100)/100 * alertVolumeMultiplier
           await alertPlayer.value.play();
         } else if (action.url) {
           audioPlayer.value.src = action.url;
@@ -249,13 +252,14 @@ export default defineComponent({
                 audio_url: `${ENV.API_URL}/v1/alerts/${ae.payload.alert.type}/${ae.payload.alert.audio}`,
                 text: ae.payload.alert.text,
                 sub_text: ae.payload.alert.sub_text,
+                volume: ae.payload.alert.volume,
               }
             : null,
         });
         checkProcessing();
       } else if (ae.event === "skip") {
         if (endReject) endReject();
-        onEnd(true);
+        onEnd(null, true);
       } else if (ae.event === "reload") {
         window.location.reload();
       }
@@ -282,11 +286,14 @@ export default defineComponent({
       }
     };
 
+    let alertVolumeMultiplier: number;
+    let ttsVolume: number;
+
     const init = () => {
       console.log("starting eventsub");
 
-      alertPlayer.value.volume = parseFloat((route.query.alertVolume as LocationQueryValue)?.toString() || "50")/100;
-      audioPlayer.value.volume = parseFloat((route.query.ttsVolume as LocationQueryValue)?.toString() || "100")/100;
+      alertVolumeMultiplier = alertPlayer.value.volume = parseFloat((route.query.alertVolume as LocationQueryValue)?.toString() || "50")/100;
+      ttsVolume = audioPlayer.value.volume = parseFloat((route.query.ttsVolume as LocationQueryValue)?.toString() || "100")/100;
 
       cleanup();
       evtSource = new EventSource(`${ENV.API_URL}/v1/sse/${route.params.id}`);
