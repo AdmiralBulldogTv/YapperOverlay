@@ -62,10 +62,10 @@
             <ul>
               <li>
                 3 Euro and above enables narr1, narr2, narr3, ann1, bull, obama,
-                arno, krab
+                arno, krab, Lacari, Glados, Gaben, Trump, Arch, Loli, Gura, Rae and Pooh
               </li>
-              <li>6 Euro and above enables Lacari, Glados, Gaben, Trump, Arch, Loli and Gura</li>
-              <li>10 Euro and above enables Rae and Pooh</li>
+              <!-- <li>6 Euro and above enables Lacari, Glados, Gaben, Trump, Arch, Loli and Gura</li> -->
+              <!-- <li>10 Euro and above enables Rae and Pooh</li> -->
             </ul>
           </li>
         </ul>
