@@ -22,29 +22,32 @@
             in backtick characters. Example: `hello`
           </li>
           <li>
-            Click this link to donate. <a href="https://streamelements.com/admiralbulldog/tip">https://streamelements.com/admiralbulldog/tip</a>
+            Click this link to donate.
+            <a href="https://streamelements.com/admiralbulldog/tip"
+              >https://streamelements.com/admiralbulldog/tip</a
+            >
           </li>
           <li>
             <h3>Subscriptions</h3>
             <p>
-              The following voice brackets, indicate when the voices become unlocked.
+              The following voice brackets, indicate when the voices become
+              unlocked.
             </p>
             <p>It also is when the voice is unlocked.</p>
             <p>
               i.e. a 3 month sub cannot use rae's voice until they are a 41
               month sub but a 56 month sub can use rae's voice.
             </p>
-            <p>
-              The default voice for subscriptions is trump.
-            </p>
+            <p>The default voice for subscriptions is trump.</p>
             <ul>
               <li>
-                Voices enabled by default: narr1, narr2, narr3, ann1, bull, obama, trump
+                Voices enabled by default: narr1, narr2, narr3, ann1, bull,
+                obama, trump
               </li>
               <li>At 10 months of subscription you unlock arno</li>
               <li>At 13 months of subscription you unlock lac</li>
               <li>At 16 months of subscription you unlock krab</li>
-              <li>At 22 months of subscription you unlock glad</li>
+              <li>At 22 months of subscription you unlock glad and doc</li>
               <li>At 30 months of subscription you unlock arch and loli</li>
               <li>At 35 months of subscription you unlock gura</li>
               <li>At 41 months of subscription you unlock rae</li>
@@ -62,7 +65,8 @@
             <ul>
               <li>
                 3 Euro and above enables narr1, narr2, narr3, ann1, bull, obama,
-                arno, krab, Lacari, Glados, Gaben, Trump, Arch, Loli, Gura, Rae and Pooh
+                arno, krab, Lacari, Glados, Gaben, Trump, Arch, Loli, Gura, Rae,
+                Pooh and Doc
               </li>
               <!-- <li>6 Euro and above enables Lacari, Glados, Gaben, Trump, Arch, Loli and Gura</li> -->
               <!-- <li>10 Euro and above enables Rae and Pooh</li> -->
@@ -337,11 +341,29 @@
                 <PlayButton
                   @click="playing !== 17 ? (playing = 17) : (playing = -1)"
                   :paused="playing !== 17"
-                />gura: i love long hard big fat. p v c pipes which allow me to build my water park.
+                />gura: i love long hard big fat. p v c pipes which allow me to
+                build my water park.
               </p>
               <audio
                 src="@voices/gura-example.wav"
                 ref="audio-17"
+                @ended="playing = -1"
+              />
+            </details>
+          </div>
+          <div class="voice" @click.prevent="onClick">
+            <details>
+              <summary @mousedown.prevent>doc: Doctor Disrespect</summary>
+              <p @click.stop>
+                <PlayButton
+                  @click="playing !== 18 ? (playing = 18) : (playing = -1)"
+                  :paused="playing !== 18"
+                />doc: bulldog a long standing member of the champions club,
+                invited me to his tts hall of fame
+              </p>
+              <audio
+                src="@voices/doc-example.wav"
+                ref="audio-18"
                 @ended="playing = -1"
               />
             </details>
@@ -418,24 +440,25 @@ export default defineComponent({
   setup() {
     const playing = ref(-1);
     const refs = {
-      "audio-0": ref((null as unknown) as HTMLAudioElement),
-      "audio-1": ref((null as unknown) as HTMLAudioElement),
-      "audio-2": ref((null as unknown) as HTMLAudioElement),
-      "audio-3": ref((null as unknown) as HTMLAudioElement),
-      "audio-4": ref((null as unknown) as HTMLAudioElement),
-      "audio-5": ref((null as unknown) as HTMLAudioElement),
-      "audio-6": ref((null as unknown) as HTMLAudioElement),
-      "audio-7": ref((null as unknown) as HTMLAudioElement),
-      "audio-8": ref((null as unknown) as HTMLAudioElement),
-      "audio-9": ref((null as unknown) as HTMLAudioElement),
-      "audio-10": ref((null as unknown) as HTMLAudioElement),
-      "audio-11": ref((null as unknown) as HTMLAudioElement),
-      "audio-12": ref((null as unknown) as HTMLAudioElement),
-      "audio-13": ref((null as unknown) as HTMLAudioElement),
-      "audio-14": ref((null as unknown) as HTMLAudioElement),
-      "audio-15": ref((null as unknown) as HTMLAudioElement),
-      "audio-16": ref((null as unknown) as HTMLAudioElement),
-      "audio-17": ref((null as unknown) as HTMLAudioElement),
+      "audio-0": ref(null as unknown as HTMLAudioElement),
+      "audio-1": ref(null as unknown as HTMLAudioElement),
+      "audio-2": ref(null as unknown as HTMLAudioElement),
+      "audio-3": ref(null as unknown as HTMLAudioElement),
+      "audio-4": ref(null as unknown as HTMLAudioElement),
+      "audio-5": ref(null as unknown as HTMLAudioElement),
+      "audio-6": ref(null as unknown as HTMLAudioElement),
+      "audio-7": ref(null as unknown as HTMLAudioElement),
+      "audio-8": ref(null as unknown as HTMLAudioElement),
+      "audio-9": ref(null as unknown as HTMLAudioElement),
+      "audio-10": ref(null as unknown as HTMLAudioElement),
+      "audio-11": ref(null as unknown as HTMLAudioElement),
+      "audio-12": ref(null as unknown as HTMLAudioElement),
+      "audio-13": ref(null as unknown as HTMLAudioElement),
+      "audio-14": ref(null as unknown as HTMLAudioElement),
+      "audio-15": ref(null as unknown as HTMLAudioElement),
+      "audio-16": ref(null as unknown as HTMLAudioElement),
+      "audio-17": ref(null as unknown as HTMLAudioElement),
+      "audio-18": ref(null as unknown as HTMLAudioElement),
     };
 
     watch(playing, (newValue, oldValue) => {

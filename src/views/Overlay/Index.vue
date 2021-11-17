@@ -4,7 +4,12 @@
     <span v-if="alertText" class="text">
       <template v-for="(word, i) in alertText">
         <span v-if="word.animate" class="wiggle" :key="i">
-          <span class="animated-letter" v-for="(l, n) in word.word.split('')" :key="`${i}-${n}`">{{l}}</span>
+          <span
+            class="animated-letter"
+            v-for="(l, n) in word.word.split('')"
+            :key="`${i}-${n}`"
+            >{{ l }}</span
+          >
         </span>
         {{ word.extra }}
       </template>
@@ -88,11 +93,11 @@ export default defineComponent({
     const alertImage = ref("");
     const alertText = ref([] as AlertWord[]);
     const alertSubText = ref("");
-    const alertPlayer = ref((null as unknown) as HTMLAudioElement);
+    const alertPlayer = ref(null as unknown as HTMLAudioElement);
 
     const notFound = ref(false);
     const isConnected = ref(false);
-    const audioPlayer = ref((null as unknown) as HTMLAudioElement);
+    const audioPlayer = ref(null as unknown as HTMLAudioElement);
 
     const i = setInterval(() => {
       if (!evtSource) isConnected.value = false;
@@ -179,17 +184,17 @@ export default defineComponent({
             endReject = null;
           });
           alertImageFade.value = true;
-          
+
           const arr: AlertWord[] = [];
           let currentWord: AlertWord = {
             animate: false,
             word: "",
             extra: "",
-          }
+          };
 
           const split = action.alert.text.split(" ");
           for (const word of split) {
-            if (word.charAt(0) === '~') {
+            if (word.charAt(0) === "~") {
               if (currentWord.word || currentWord.extra) {
                 currentWord.extra += " ";
                 arr.push(currentWord);
@@ -198,9 +203,9 @@ export default defineComponent({
                 animate: true,
                 word: word.substr(1),
                 extra: "",
-              }
+              };
             } else {
-              currentWord.extra += ` ${word}`
+              currentWord.extra += ` ${word}`;
             }
           }
 
@@ -210,7 +215,8 @@ export default defineComponent({
           alertSubText.value = action.alert.sub_text;
 
           alertPlayer.value.src = action.alert.audio_url;
-          alertPlayer.value.volume = (action.alert.volume || 100)/100 * alertVolumeMultiplier
+          alertPlayer.value.volume =
+            ((action.alert.volume || 100) / 100) * alertVolumeMultiplier;
           await alertPlayer.value.play();
         } else if (action.url) {
           audioPlayer.value.src = action.url;
@@ -292,8 +298,14 @@ export default defineComponent({
     const init = () => {
       console.log("starting eventsub");
 
-      alertVolumeMultiplier = alertPlayer.value.volume = parseFloat((route.query.alertVolume as LocationQueryValue)?.toString() || "50")/100;
-      ttsVolume = audioPlayer.value.volume = parseFloat((route.query.ttsVolume as LocationQueryValue)?.toString() || "100")/100;
+      alertVolumeMultiplier = alertPlayer.value.volume =
+        parseFloat(
+          (route.query.alertVolume as LocationQueryValue)?.toString() || "50"
+        ) / 100;
+      ttsVolume = audioPlayer.value.volume =
+        parseFloat(
+          (route.query.ttsVolume as LocationQueryValue)?.toString() || "100"
+        ) / 100;
 
       cleanup();
       evtSource = new EventSource(`${ENV.API_URL}/v1/sse/${route.params.id}`);

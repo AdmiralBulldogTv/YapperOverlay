@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
 .overlay {
   display: flex;
@@ -20,9 +20,9 @@
 span {
   color: white;
   text-align: center;
-  font-family: "Open Sans"; 
-  font-weight: 400; 
-  text-shadow: rgba(0, 0, 0, 0.8) 1px 1px 1px; 
+  font-family: "Open Sans";
+  font-weight: 400;
+  text-shadow: rgba(0, 0, 0, 0.8) 1px 1px 1px;
 }
 
 .text {
@@ -44,7 +44,7 @@ span {
 
 @keyframes wiggle {
   50% {
-    transform: rotate(-4deg) scale(1.1)
+    transform: rotate(-4deg) scale(1.1);
   }
 }
 .wiggle {
@@ -88,7 +88,7 @@ span {
     animation-delay: 0.9s;
   }
   &:nth-child(11) {
-    animation-delay: 1.0s;
+    animation-delay: 1s;
   }
   &:nth-child(12) {
     animation-delay: 1.1s;
@@ -118,7 +118,7 @@ span {
     animation-delay: 1.9s;
   }
   &:nth-child(21) {
-    animation-delay: 2.0s;
+    animation-delay: 2s;
   }
   &:nth-child(22) {
     animation-delay: 2.1s;
