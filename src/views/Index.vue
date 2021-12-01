@@ -38,11 +38,11 @@
               i.e. a 3 month sub cannot use rae's voice until they are a 41
               month sub but a 56 month sub can use rae's voice.
             </p>
-            <p>The default voice for subscriptions is trump.</p>
+            <p>The default voice for subscriptions is pooh.</p>
             <ul>
               <li>
                 Voices enabled by default: narr1, narr2, narr3, ann1, bull,
-                obama, trump
+                obama, trump, pooh
               </li>
               <li>At 10 months of subscription you unlock arno</li>
               <li>At 13 months of subscription you unlock lac</li>
@@ -52,13 +52,13 @@
               <li>At 35 months of subscription you unlock gura</li>
               <li>At 41 months of subscription you unlock rae</li>
               <li>At 50 months of subscription you unlock gabe</li>
-              <li>At 56 months of subscription you unlock pooh</li>
+              <li>At 56 months of subscription you unlock doc</li>
             </ul>
           </li>
           <li>
             <h3>Bits and Donations</h3>
             <p>Every 100 bits = 1 Euro.</p>
-            <p>The default voice for donations is bull</p>
+            <p>The default voice for donations is pooh</p>
             <p>
               All bit emotes are stripped. Such as Cheer100 or PogChamp1000.
             </p>
