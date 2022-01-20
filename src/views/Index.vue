@@ -9,13 +9,11 @@
             Anything overly sexual or hateful will result in being permabanned.
           </li>
           <li>You can have a maximum of 5 different voice swaps.</li>
-          <!-- <li>You can add a maximum of 15 different sound bytes.</li> -->
           <li>
             If your message is too obnoxious or annoying it can be skipped
             without refund.
           </li>
           <li>You can change voice by doing voice + ":"</li>
-          <!-- <li>You can insert a sound byte by "(" + soundbyte + ")"</li> -->
           <li>
             By default some words are changed to help the model pronounce it
             better, you can disable feature by wrapping whatever you want to say
@@ -38,18 +36,20 @@
               i.e. a 3 month sub cannot use rae's voice until they are a 41
               month sub but a 56 month sub can use rae's voice.
             </p>
-            <p>The default voice for subscriptions is pooh.</p>
+            <p>The default voice for subscriptions is billy.</p>
             <ul>
               <li>
-                Voices enabled by default: narr1, narr2, narr3, ann1, bull,
-                obama, trump, pooh
+                Voices enabled by default: ann1, narr1, narr2, narr3, bull,
+                obama, trump, pooh, billy
               </li>
+              <li>At 6 months of subscription you unlock sepity</li>
               <li>At 10 months of subscription you unlock arno</li>
               <li>At 13 months of subscription you unlock lac</li>
               <li>At 16 months of subscription you unlock krab</li>
-              <li>At 22 months of subscription you unlock glad and doc</li>
-              <li>At 30 months of subscription you unlock arch and loli</li>
-              <li>At 35 months of subscription you unlock gura</li>
+              <li>At 18 months of subscription you unlock steve</li>
+              <li>At 22 months of subscription you unlock glad</li>
+              <li>At 30 months of subscription you unlock arch, gura, loli</li>
+              <li>At 35 months of subscription you unlock billy</li>
               <li>At 41 months of subscription you unlock rae</li>
               <li>At 50 months of subscription you unlock gabe</li>
               <li>At 56 months of subscription you unlock doc</li>
@@ -58,18 +58,16 @@
           <li>
             <h3>Bits and Donations</h3>
             <p>Every 100 bits = 1 Euro.</p>
-            <p>The default voice for donations is pooh</p>
+            <p>The default voice for donations is billy.</p>
             <p>
               All bit emotes are stripped. Such as Cheer100 or PogChamp1000.
             </p>
             <ul>
               <li>
-                3 Euro and above enables narr1, narr2, narr3, ann1, bull, obama,
-                arno, krab, Lacari, Glados, Gaben, Trump, Arch, Loli, Gura, Rae,
-                Pooh and Doc
+                3 Euro and above enables ann1, narr1, narr2, narr3, bull, arno,
+                krab, obama, lac, glad, gabe, trump, arch, gura, loli, rae,
+                pooh, doc, billy, steve, sepity
               </li>
-              <!-- <li>6 Euro and above enables Lacari, Glados, Gaben, Trump, Arch, Loli and Gura</li> -->
-              <!-- <li>10 Euro and above enables Rae and Pooh</li> -->
             </ul>
           </li>
         </ul>
@@ -370,6 +368,57 @@
           </div>
           <div class="voice" @click.prevent="onClick">
             <details>
+              <summary @mousedown.prevent>
+                billy: Billy Herrington (Aniki)
+              </summary>
+              <p @click.stop>
+                <PlayButton
+                  @click="playing !== 19 ? (playing = 19) : (playing = -1)"
+                  :paused="playing !== 19"
+                />billy: ASS WE CAN!
+              </p>
+              <audio
+                src="@voices/billy-example.wav"
+                ref="audio-19"
+                @ended="playing = -1"
+              />
+            </details>
+          </div>
+          <div class="voice" @click.prevent="onClick">
+            <details>
+              <summary @mousedown.prevent>steve: Steve Harvey</summary>
+              <p @click.stop>
+                <PlayButton
+                  @click="playing !== 20 ? (playing = 20) : (playing = -1)"
+                  :paused="playing !== 20"
+                />steve: welcome to the feud everybody tonight we have a boring
+                ass stream
+              </p>
+              <audio
+                src="@voices/steve-example.wav"
+                ref="audio-20"
+                @ended="playing = -1"
+              />
+            </details>
+          </div>
+          <div class="voice" @click.prevent="onClick">
+            <details>
+              <summary @mousedown.prevent>sepity: Sepitys (megacuck)</summary>
+              <p @click.stop>
+                <PlayButton
+                  @click="playing !== 21 ? (playing = 21) : (playing = -1)"
+                  :paused="playing !== 21"
+                />sepity: daddy bulldog please can i play a game today
+              </p>
+              <audio
+                src="@voices/sapity-example.wav"
+                ref="audio-21"
+                @ended="playing = -1"
+              />
+            </details>
+          </div>
+          <div class="voice" @click.prevent="onClick">
+            <details>
               <summary @mousedown.prevent>Multi Voice</summary>
               <p @click.stop>
                 <PlayButton
@@ -384,33 +433,8 @@
               />
             </details>
           </div>
-          <!-- <div class="voice" @click.prevent="onClick">
-            <details>
-              <summary @mousedown.prevent>poki: Pokimane</summary>
-              <p @click.stop>
-                <PlayButton
-                  @click="playing !== 12 ? (playing = 12) : (playing = -1)"
-                  :paused="playing !== 12"
-                />poki: thank you so much for the tier 3 devon 
-              </p>
-              <audio src="@voices/poki-example.wav" ref="audio-12" @ended="playing = -1" />
-            </details>
-          </div> -->
         </div>
       </details>
-      <!-- <details open>
-        <summary class="h2">Avaliable SoundBytes</summary>
-        <div class="voices">
-          <div class="voice" @click.prevent="onClick" >
-            <details>
-              <summary @mousedown.prevent>bark</summary>
-              <p @click.stop>
-                rae: bulldog is my best friend.
-              </p>
-            </details>
-          </div>
-        </div>
-      </details> -->
     </div>
     <div class="footer">
       <p>
@@ -459,6 +483,9 @@ export default defineComponent({
       "audio-16": ref(null as unknown as HTMLAudioElement),
       "audio-17": ref(null as unknown as HTMLAudioElement),
       "audio-18": ref(null as unknown as HTMLAudioElement),
+      "audio-19": ref(null as unknown as HTMLAudioElement),
+      "audio-20": ref(null as unknown as HTMLAudioElement),
+      "audio-21": ref(null as unknown as HTMLAudioElement),
     };
 
     watch(playing, (newValue, oldValue) => {

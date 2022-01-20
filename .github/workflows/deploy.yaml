@@ -41,24 +41,24 @@ jobs:
       - build
 
     steps:
-        # Checkout repository
-        - uses: actions/checkout@v2
+      # Checkout repository
+      - uses: actions/checkout@v2
 
-        # Deploy to k8s
-        - name: Install kubectl&
-          uses: azure/setup-kubectl@v1
+      # Deploy to k8s
+      - name: Install kubectl&
+        uses: azure/setup-kubectl@v1
 
-        - name: Apply Deployment & Rollout
-          env:
-            KUBE_CONFIG_DATA: ${{ secrets.YAPPER_K8S_AUTODEPLOY }}
-            KUBE_RESOURCE: deploy
-            KUBE_IMAGE_PATCH: >-
-              [
-                { "op": "replace", "path": "/spec/template/spec/containers/0/image", "value": "harbor.komodohype.dev/troy/yapper-overlay:${{ github.sha }}" }
-              ]
-          run: |
-            mkdir -p ~/.kube
-            (echo $KUBE_CONFIG_DATA | base64 -d) >> ~/.kube/config
-            kubectl config use-context autodeploy@yapper
-            kubectl patch $KUBE_RESOURCE -n yapper overlay --type="json" -p="$KUBE_IMAGE_PATCH"
-            kubectl rollout restart -n yapper $KUBE_RESOURCE/overlay
+      - name: Apply Deployment & Rollout
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.YAPPER_K8S_AUTODEPLOY }}
+          KUBE_RESOURCE: deploy
+          KUBE_IMAGE_PATCH: >-
+            [
+              { "op": "replace", "path": "/spec/template/spec/containers/0/image", "value": "harbor.komodohype.dev/troy/yapper-overlay:${{ github.sha }}" }
+            ]
+        run: |
+          mkdir -p ~/.kube
+          (echo $KUBE_CONFIG_DATA | base64 -d) >> ~/.kube/config
+          kubectl config use-context autodeploy@yapper
+          kubectl patch $KUBE_RESOURCE -n yapper overlay --type="json" -p="$KUBE_IMAGE_PATCH"
+          kubectl rollout restart -n yapper $KUBE_RESOURCE/overlay
