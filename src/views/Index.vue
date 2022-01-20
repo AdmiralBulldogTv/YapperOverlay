@@ -411,7 +411,7 @@
                 />sepity: daddy bulldog please can i play a game today
               </p>
               <audio
-                src="@voices/sapity-example.wav"
+                src="@voices/sepity-example.wav"
                 ref="audio-21"
                 @ended="playing = -1"
               />
