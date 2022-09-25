@@ -549,6 +549,7 @@
           </div>
         </div>
       </details>
+      </details>
     </div>
     <div class="footer">
       <p>
