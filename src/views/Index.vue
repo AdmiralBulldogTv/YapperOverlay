@@ -36,7 +36,7 @@
               i.e. a 3 month sub cannot use rae's voice until they are a 41
               month sub but a 56 month sub can use rae's voice.
             </p>
-            <p>The default voice for subscriptions is arno.</p>
+            <p>The default voice for subscriptions is arno .</p>
             <ul>
               <li>
                 Voices enabled by default: ann1, narr1, narr2, narr3, bull,
