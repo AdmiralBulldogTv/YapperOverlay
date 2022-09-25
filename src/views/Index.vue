@@ -36,11 +36,11 @@
               i.e. a 3 month sub cannot use rae's voice until they are a 41
               month sub but a 56 month sub can use rae's voice.
             </p>
-            <p>The default voice for subscriptions is arno.</p>
+            <p>The default voice for subscriptions is george.</p>
             <ul>
               <li>
                 Voices enabled by default: ann1, narr1, narr2, narr3, bull,
-                obama, trump, pooh, arno
+                obama, trump, pooh, george, melina, kratos, lamar, kkona, widehardo, beta
               </li>
               <li>At 6 months of subscription you unlock sepity</li>
               <li>At 10 months of subscription you unlock arno</li>
@@ -58,7 +58,7 @@
           <li>
             <h3>Bits and Donations</h3>
             <p>Every 100 bits = 1 Euro.</p>
-            <p>The default voice for donations is arno.</p>
+            <p>The default voice for donations is george.</p>
             <p>
               All bit emotes are stripped. Such as Cheer100 or PogChamp1000.
             </p>
@@ -413,6 +413,119 @@
               <audio
                 src="@voices/sepity-example.wav"
                 ref="audio-21"
+                @ended="playing = -1"
+              />
+            </details>
+          </div>
+          <div class="voice" @click.prevent="onClick">
+            <details>
+              <summary @mousedown.prevent>lamar: Lamar </summary>
+              <p @click.stop>
+                <PlayButton
+                  @click="playing !== 22 ? (playing = 22) : (playing = -1)"
+                  :paused="playing !== 22"
+                />lamar: yo dog I just dropped a brick in this crib you know this place ain ga ever be the same
+              </p>
+              <audio
+                src="@voices/lamar-example.wav"
+                ref="audio-22"
+                @ended="playing = -1"
+              />
+            </details>
+          </div>
+          <div class="voice" @click.prevent="onClick">
+            <details>
+              <summary @mousedown.prevent>kratos: Kratos </summary>
+              <p @click.stop>
+                <PlayButton
+                  @click="playing !== 23 ? (playing = 23) : (playing = -1)"
+                  :paused="playing !== 23"
+                />kratos: listen boy, you need to shut up and listen
+              </p>
+              <audio
+                src="@voices/kratos-example.wav"
+                ref="audio-23"
+                @ended="playing = -1"
+              />
+            </details>
+          </div>
+
+          <div class="voice" @click.prevent="onClick">
+            <details>
+              <summary @mousedown.prevent>kkona: Arthur Morgan </summary>
+              <p @click.stop>
+                <PlayButton
+                  @click="playing !== 24 ? (playing = 24) : (playing = -1)"
+                  :paused="playing !== 24"
+                />kkona: I am a true red blooded american, and I'm here to restore the balance in this country.
+              </p>
+              <audio
+                src="@voices/kkona-example.wav"
+                ref="audio-24"
+                @ended="playing = -1"
+              />
+            </details>
+          </div>
+          <div class="voice" @click.prevent="onClick">
+            <details>
+              <summary @mousedown.prevent>widehardo: CJ </summary>
+              <p @click.stop>
+                <PlayButton
+                  @click="playing !== 25 ? (playing = 25) : (playing = -1)"
+                  :paused="playing !== 25"
+                />widehardo: I aint hearing that shit lady, its a new day you people can't discriminate no more.
+              </p>
+              <audio
+                src="@voices/cj-example.wav"
+                ref="audio-25"
+                @ended="playing = -1"
+              />
+            </details>
+          </div>
+          <div class="voice" @click.prevent="onClick">
+            <details>
+              <summary @mousedown.prevent>melina: Melina </summary>
+              <p @click.stop>
+                <PlayButton
+                  @click="playing !== 26 ? (playing = 26) : (playing = -1)"
+                  :paused="playing !== 26"
+                />melina: Will you answer the call and become elden lord.
+              </p>
+              <audio
+                src="@voices/melina-example.wav"
+                ref="audio-26"
+                @ended="playing = -1"
+              />
+            </details>
+          </div>
+          <div class="voice" @click.prevent="onClick">
+            <details>
+              <summary @mousedown.prevent>beta: Betacuck </summary>
+              <p @click.stop>
+                <PlayButton
+                  @click="playing !== 27 ? (playing = 27) : (playing = -1)"
+                  :paused="playing !== 27"
+                />beta: Man that sounds so boring, can't I just watch some tik tock.
+              </p>
+              <audio
+                src="@voices/beta-example.wav"
+                ref="audio-27"
+                @ended="playing = -1"
+              />
+            </details>
+          </div>
+          <div class="voice" @click.prevent="onClick">
+            <details>
+              <summary @mousedown.prevent>george: George Warden </summary>
+              <p @click.stop>
+                <PlayButton
+                  @click="playing !== 28 ? (playing = 28) : (playing = -1)"
+                  :paused="playing !== 28"
+                />george: I am george warden the guy that is single handily carrying bulldog's reddit.
+              </p>
+              <audio
+                src="@voices/george-example.wav"
+                ref="audio-28"
                 @ended="playing = -1"
               />
             </details>
