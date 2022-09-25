@@ -514,7 +514,6 @@
               />
             </details>
           </div>
-          </div>
           <div class="voice" @click.prevent="onClick">
             <details>
               <summary @mousedown.prevent>george: George Warden </summary>
