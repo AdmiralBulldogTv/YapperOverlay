@@ -36,7 +36,7 @@
               i.e. a 3 month sub cannot use rae's voice until they are a 41
               month sub but a 56 month sub can use rae's voice.
             </p>
-            <p>The default voice for subscriptions is george.</p>
+            <p>The default voice for subscriptions is random.</p>
             <ul>
               <li>
                 Voices enabled by default: ann1, narr1, narr2, narr3, bull,
@@ -58,7 +58,7 @@
           <li>
             <h3>Bits and Donations</h3>
             <p>Every 100 bits = 1 Euro.</p>
-            <p>The default voice for donations is george.</p>
+            <p>The default voice for donations is random.</p>
             <p>
               All bit emotes are stripped. Such as Cheer100 or PogChamp1000.
             </p>
