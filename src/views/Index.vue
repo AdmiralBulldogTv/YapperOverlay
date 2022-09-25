@@ -599,6 +599,13 @@ export default defineComponent({
       "audio-19": ref(null as unknown as HTMLAudioElement),
       "audio-20": ref(null as unknown as HTMLAudioElement),
       "audio-21": ref(null as unknown as HTMLAudioElement),
+      "audio-22": ref(null as unknown as HTMLAudioElement),
+      "audio-23": ref(null as unknown as HTMLAudioElement),
+      "audio-24": ref(null as unknown as HTMLAudioElement),
+      "audio-25": ref(null as unknown as HTMLAudioElement),
+      "audio-26": ref(null as unknown as HTMLAudioElement),
+      "audio-27": ref(null as unknown as HTMLAudioElement),
+      "audio-28": ref(null as unknown as HTMLAudioElement),
     };
 
     watch(playing, (newValue, oldValue) => {
